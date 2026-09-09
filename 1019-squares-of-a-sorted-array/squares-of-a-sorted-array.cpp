@@ -2,11 +2,27 @@ class Solution {
 public:
     vector<int> sortedSquares(vector<int>& arr) {
         int n=arr.size();
-        for(int i=0;i<n;i++){
-            arr[i]=pow(arr[i],2);
+        vector<int>ans(n);
+
+        int l=0,r=n-1;
+
+        int k=n-1;
+
+        while(l<=r){
+            if(abs(arr[l])<=abs(arr[r])){
+                ans[k--]=pow(arr[r],2);
+                r--;
+            }
+            else if(abs(arr[l])>abs(arr[r])){
+                ans[k--]=pow(arr[l],2);
+                l++;
+            }
         }
 
-        sort(arr.begin(),arr.end());
-        return arr;
+        for(auto a:ans){
+            cout<<a<<" ";
+        }
+
+        return ans;
     }
 };
