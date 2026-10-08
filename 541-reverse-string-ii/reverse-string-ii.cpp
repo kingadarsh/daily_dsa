@@ -3,11 +3,11 @@ public:
     string reverseStr(string s, int k) {
         int n=s.size();
 
-        int i=0,j=k;
-        if(k>=n){
-            reverse(s.begin(),s.end());
-            return s;
-            }
+        
+        // if(k>=n){
+        //     reverse(s.begin(),s.end());
+        //     return s;
+        //     }
 
         for(int i=0;i<n;i+=2*k){
             if(i+k<=n){
