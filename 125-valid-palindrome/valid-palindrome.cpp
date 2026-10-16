@@ -1,25 +1,20 @@
-bool recu(string &s,int i, int j, bool ans){
+bool recu(const string &s,int i, int j){
     if(i>=j){
-        return ans;
+        return true;
     }
 
     if(!isalnum(s[i])){
-       return recu(s,i+1,j,ans);
+       return recu(s,i+1,j);
     }
     else if(!isalnum(s[j])){
-       return recu(s,i,j-1,ans);
+       return recu(s,i,j-1);
     }
-    else if(isalnum(s[i]) and isalnum(s[j]) ){
-        if(tolower(s[i])!=tolower(s[j])){
-            return false;
-        }
-        else{
-           return recu(s,i+1,j-1,ans);
-        }
-        
+    
+    if(tolower(s[i])!=tolower(s[j])){
+        return false;
     }
 
-    return ans;
+    return recu(s, i + 1, j - 1);
     
 
 }
@@ -27,7 +22,7 @@ bool recu(string &s,int i, int j, bool ans){
 class Solution {
 public:
     bool isPalindrome(string s) {
-        bool ans=true;
-        return recu(s,0,s.size()-1,ans);
+        // bool ans=true;
+        return recu(s,0,s.size()-1);
     }
 };
